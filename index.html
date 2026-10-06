@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sevim Beçet, Energy Systems M.S. student at UC Davis. Agent-based transportation modeling, positive energy districts and solar energy design.">
+<title>Sevim Beçet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single readable column with a narrow left rail for years/meta, grouped by research theme */
+:root{
+  --bg:#f6f8f7;
+  --surface:#ffffff;
+  --ink:#16222b;
+  --muted:#5b6b73;
+  --line:#d8e0de;
+  --accent:#1f6f6a;      /* grid teal */
+  --sun:#c98a12;         /* PV amber, used sparingly */
+  --chip:#e7efed;
+  --f-display:"Newsreader", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1619; --surface:#151f23; --ink:#e4ecea; --muted:#93a4a9; --line:#26343a;
+    --accent:#5cc2b9; --sun:#e6b04a; --chip:#1c2a2f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1619; --surface:#151f23; --ink:#e4ecea; --muted:#93a4a9; --line:#26343a;
+  --accent:#5cc2b9; --sun:#e6b04a; --chip:#1c2a2f; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;padding-inline:20px}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:880px;margin:0 auto}
+
+/* nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-inline:-20px;padding-inline:20px}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font-size:.9rem;color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:64px 40px;display:grid;gap:20px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.08;margin:0;text-wrap:balance}
+.lede{font-size:1.15rem;max-width:62ch;margin:0;color:var(--ink)}
+.lede em{font-style:normal;color:var(--accent);font-weight:500}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:.92rem;color:var(--muted)}
+.email{font-family:var(--f-mono);font-size:.88rem;color:var(--ink);user-select:all}
+button.copy{font:inherit;font-size:.8rem;background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:3px 10px;cursor:pointer}
+button.copy:hover{border-color:var(--accent)}
+
+/* now block */
+.now{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:22px 24px;display:grid;gap:8px;margin-bottom:24px}
+.now .eyebrow{color:var(--sun);display:flex;align-items:center;gap:8px}
+.now .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.now h3{margin:0;font-family:var(--f-display);font-weight:500;font-size:1.45rem;line-height:1.25}
+.now p{margin:0;max-width:65ch}
+
+/* sections */
+section{padding-block:40px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+h2{font-family:var(--f-display);font-weight:500;font-size:2rem;margin:0 0 6px}
+.sec-intro{color:var(--muted);margin:0 0 28px;max-width:62ch}
+h3.theme{font-family:var(--f-mono);font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:36px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+
+/* project rows */
+.proj{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 24px;padding-block:20px;border-bottom:1px solid var(--line)}
+.proj:last-child{border-bottom:0}
+.yr{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:4px}
+.proj h4{margin:0;font-family:var(--f-display);font-weight:500;font-size:1.3rem;line-height:1.3;text-wrap:balance}
+.org{font-size:.88rem;color:var(--muted);margin:2px 0 8px}
+.proj p{margin:0 0 10px;max-width:65ch}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;color:var(--sun);border:1px solid currentColor;border-radius:3px;padding:1px 7px;margin-left:8px;vertical-align:3px;white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.74rem;background:var(--chip);color:var(--muted);border-radius:3px;padding:2px 8px}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 24px;padding-block:14px;border-bottom:1px solid var(--line)}
+.pubs .t{font-family:var(--f-display);font-size:1.08rem;line-height:1.35}
+.pubs .v{font-size:.88rem;color:var(--muted);margin-top:2px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px}
+.about-grid p{max-width:62ch;margin:0 0 14px}
+h5{font-family:var(--f-mono);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.tl{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px}
+.tl li{font-size:.94rem;line-height:1.45}
+.tl b{font-weight:500;display:block}
+.tl span{color:var(--muted);font-size:.85rem}
+.skills{display:grid;gap:14px}
+.skills .tags span{font-size:.76rem}
+
+footer{border-top:1px solid var(--line);padding-block:32px 48px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:640px){
+  .hero{padding-block:40px 28px}
+  .proj,.pubs li{grid-template-columns:minmax(0,1fr)}
+  .yr{padding-top:0}
+  .about-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+  nav{gap:14px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">Sevim Beçet</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#publications">Publications</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="home">
+  <div class="hero">
+    <div class="eyebrow">Energy Systems · UC Davis</div>
+    <h1>Modeling how cities move, build and use energy.</h1>
+    <p class="lede">I'm an Energy Systems M.S. student at UC Davis and an industrial engineer. My work spans <em>agent-based transportation modeling</em>, <em>positive energy districts</em> and <em>solar and building energy design</em>, from a single campus to whole urban districts.</p>
+    <div class="contact-row">
+      <span class="email" id="email">sbecet@ucdavis.edu</span>
+      <button class="copy" id="copyBtn" type="button">Copy email</button>
+      <span>Davis, California</span>
+    </div>
+  </div>
+
+  <div class="now">
+    <div class="eyebrow">Currently</div>
+    <h3>Agent-based transportation modeling with Lawrence Berkeley National Laboratory</h3>
+    <p>Graduate researcher at UC Davis working with an LBNL team. I build transportation and energy demand scenarios for different urban districts, linking the road network, travel behavior and energy use in one model.</p>
+  </div>
+
+  <section id="work">
+    <h2>Selected work</h2>
+    <p class="sec-intro">Research, competition and engineering projects, grouped by theme.</p>
+
+    <h3 class="theme">Transportation &amp; mobility</h3>
+
+    <article class="proj">
+      <div class="yr">2026 – now</div>
+      <div>
+        <h4>Agent-Based Transportation Modeling</h4>
+        <div class="org">UC Davis · Lawrence Berkeley National Laboratory</div>
+        <p>Agent-based models of how people travel through urban districts and what that means for energy demand. I generate scenarios, manage model development and version control, and turn the results into my thesis and papers.</p>
+        <div class="tags"><span>NetLogo</span><span>Python</span><span>Agent-based modeling</span><span>Git / GitHub</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="yr">2026</div>
+      <div>
+        <h4>AI-Driven Co-Optimization of Autonomous Electric Truck Fleets</h4>
+        <div class="org">ISERT 2026 · ITS Irvine Symposium on Emerging Research in Transportation</div>
+        <p>Techno-economic feasibility and the energy and environmental impacts of moving freight to autonomous electric truck fleets that are aware of grid conditions.</p>
+        <div class="tags"><span>Electric fleets</span><span>Logistics</span><span>Grid integration</span></div>
+      </div>
+    </article>
+
+    <h3 class="theme">Districts &amp; buildings</h3>
+
+    <article class="proj">
+      <div class="yr">2024 – 2025</div>
+      <div>
+        <h4>PED4ALL: Positive Energy Districts for All</h4>
+        <div class="org">JPI Urban Europe · ITU Energy Institute</div>
+        <p>Superstructure and infrastructure strategies for the Kartal district of Istanbul, aiming for local energy production that exceeds consumption. I modeled district-scale PV, distributed generation and smart grid scenarios in an international team of engineers, architects and urban planners, and prepared deliverables for European partners.</p>
+        <div class="tags"><span>pvlib</span><span>PVSyst</span><span>PV*Sol Premium</span><span>MATLAB</span><span>BIM / 3D modeling</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="yr">2024 – 2025</div>
+      <div>
+        <h4>Erasmus+ Next Gen Sport Facilities <span class="badge">3rd worldwide</span></h4>
+        <div class="org">NOC*NSF · Dutch Olympic Committee</div>
+        <p>Designed a sustainable, energy-efficient sports complex with a three-person team. The design placed third globally and was presented at ESCC 2025 in Rhodes, Greece.</p>
+        <div class="tags"><span>Building energy</span><span>Sustainable design</span><span>Rhino / Grasshopper</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="yr">Under review</div>
+      <div>
+        <h4>Interoperable Simulation of DC Open Energy Systems for Building-Level Solar Sharing</h4>
+        <div class="org">Journal paper</div>
+        <p>Python-integrated, multi-platform modeling of direct current open energy systems (DCOES) for sharing solar energy between buildings, with a comparison of how well simulation tools work together.</p>
+        <div class="tags"><span>Python</span><span>DC microgrids</span><span>Interoperability</span></div>
+      </div>
+    </article>
+
+    <h3 class="theme">Campus &amp; community energy</h3>
+
+    <article class="proj">
+      <div class="yr">2026</div>
+      <div>
+        <h4>Energy Roadmaps for California Community Colleges</h4>
+        <div class="org">UC Davis · Lawrence Berkeley National Laboratory</div>
+        <p>An energy efficiency and decarbonization roadmap for the California Community Colleges system, using UC Davis as the reference campus and Sacramento City College as the detailed case study.</p>
+        <div class="tags"><span>Decarbonization</span><span>Energy efficiency</span><span>Campus planning</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="yr">2026</div>
+      <div>
+        <h4>Home Electrification Challenge <span class="badge">Finalist</span></h4>
+        <div class="org">Net Impact · PG&amp;E</div>
+        <p>A team proposal to lower the cost and access barriers to residential electrification in California, presented to the jury as a finalist.</p>
+        <div class="tags"><span>Electrification</span><span>Energy access</span><span>Policy</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="yr">2021 – 2022</div>
+      <div>
+        <h4>IZU YEVDES: Campus Renewable Energy Transition</h4>
+        <div class="org">Istanbul Sabahattin Zaim University · B.S. capstone, funded project</div>
+        <p>I led a funded feasibility, policy and capacity study for my university campus: modeled campus solar generation, analyzed the results statistically, and calculated transition costs and the break-even point.</p>
+        <div class="tags"><span>PVSyst</span><span>Minitab</span><span>Cost analysis</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="publications">
+    <h2>Publications &amp; talks</h2>
+    <p class="sec-intro">Papers, book chapters and conference presentations.</p>
+    <ul class="pubs">
+      <li><div class="yr">Under review</div><div><div class="t">Interoperable Simulation of Direct Current Open Energy Systems (DCOES) for Building-Level Solar Energy Sharing Using Python-Integrated Multi-Platform Modeling Tools</div></div></li>
+      <li><div class="yr">2026</div><div><div class="t">Technology Roadmap for Disaster Response and Recovery in Energy Systems</div><div class="v">Contributing author · Book chapter in <i>Technology Roadmapping 2026</i>, ed. Tuğrul U. Daim</div></div></li>
+      <li><div class="yr">2026</div><div><div class="t">AI-Driven Co-Optimization of Autonomous Electric Truck Fleets for Sustainable and Grid-Aware Logistics</div><div class="v">ISERT 2026, Irvine, California · March 2026</div></div></li>
+      <li><div class="yr">2026</div><div><div class="t">NetLogo User Conference</div><div class="v">Chicago</div></div></li>
+      <li><div class="yr">2025</div><div><div class="t">Energy-Efficient and Sustainable Sport Complex Design</div><div class="v">First author · 12th ESCC, Rhodes, Greece · Book of Proceedings, p. 74</div></div></li>
+      <li><div class="yr">2024</div><div><div class="t">Integrated Design Strategies for Sustainable Building Development: Optimizing Energy Efficiency from Micro to Macro Scales</div><div class="v">11th ESCC, Corfu, Greece · Book of Proceedings, p. 132</div></div></li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div>
+        <p>I started as an industrial engineer, planning production on a live factory floor, and moved into energy research because I wanted to work on systems that shape how cities run. Today I combine modeling, data and design to study transportation, buildings and districts as one energy system.</p>
+        <p>Before UC Davis, I was a research assistant at the Istanbul Technical University Energy Institute, working on EU-funded positive energy districts. I study in the U.S. with a graduate scholarship from the Republic of Türkiye Ministry of National Education.</p>
+
+        <h5>Experience</h5>
+        <ul class="tl">
+          <li><b>Graduate Researcher, UC Davis / LBNL</b><span>2026 – present · Davis, CA</span></li>
+          <li><b>Research Assistant, ITU Energy Institute &amp; JPI Urban Europe</b><span>2024 – 2025 · Istanbul</span></li>
+          <li><b>Planning Engineer, LC Waikiki</b><span>2022 – 2023 · Istanbul</span></li>
+          <li><b>Student Worker, Zaim Technopark Technology Transfer Office</b><span>2021 – 2022 · Istanbul</span></li>
+          <li><b>Industrial Engineering Intern, Arken Generator</b><span>2021 · Istanbul</span></li>
+        </ul>
+
+        <h5>Education</h5>
+        <ul class="tl">
+          <li><b>M.S. Energy Systems, University of California, Davis</b><span>2025 – present</span></li>
+          <li><b>M.S. Energy Science and Technology, Istanbul Technical University</b><span>2023 – 2025</span></li>
+          <li><b>B.S. Industrial Engineering, Istanbul Sabahattin Zaim University</b><span>2018 – 2022 · Full merit scholarship</span></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Honors</h5>
+        <ul class="tl">
+          <li><b>Net Impact &amp; PG&amp;E Home Electrification Challenge, Finalist</b><span>2026</span></li>
+          <li><b>Ministry of National Education Graduate Study Abroad Scholarship</b><span>2024</span></li>
+          <li><b>Erasmus+ Next Gen Sport Facilities, 3rd worldwide</b><span>2024</span></li>
+          <li><b>TCST International Summer School</b><span>2023 · ITU, TUM, Xi'an Jiaotong, Aristotle Univ.</span></li>
+          <li><b>TÜBİTAK STAR Research Scholarship</b><span>2022</span></li>
+          <li><b>IZU PRO Project Grant</b><span>2021</span></li>
+        </ul>
+
+        <h5>Tools</h5>
+        <div class="skills">
+          <div class="tags"><span>Python</span><span>pandas</span><span>NumPy</span><span>pvlib</span><span>R</span><span>NetLogo</span><span>Git / GitHub</span><span>Excel</span></div>
+          <div class="tags"><span>PVSyst</span><span>PV*Sol Premium</span><span>SAM</span><span>Rhino / Grasshopper</span><span>Revit</span><span>SAP S/4HANA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap" id="contact">
+  <span>Sevim Beçet · <span class="email">sbecet@ucdavis.edu</span></span>
+  <span>Davis, California</span>
+</footer>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', function(){
+  var b=this, txt=document.getElementById('email').textContent;
+  function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1600);}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';setTimeout(function(){b.textContent='Copy email'},1600);}
+  try{navigator.clipboard.writeText(txt).then(done,fallback);}catch(e){fallback();}
+});
+</script>
+</body>
+</html>
